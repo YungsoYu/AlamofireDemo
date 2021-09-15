@@ -22,8 +22,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
 //        basicRequest()
-        getRequestByRouter()
-        postRequestByRouter()
+//        getRequestByRouter()
+//        postRequestByRouter()
+        
+        testAuth()
+    }
+    
+    func testAuth() {
+        let router = APIRouter(path: APIPath.postPractice, httpMethod: .post, parameters: userInfo.toData, apiType: .service)
+        APIManager.shared.session.request(router).responseDecodable(of: HttpbinResponse.self, completionHandler: {(response: DataResponse<HttpbinResponse, AFError>) -> Void in
+            switch response.result {
+            case .success(let value):
+                // do someting with value in view controller level
+                break
+            case .failure(let err):
+                 print(err)
+            }
+        })
     }
     
     func basicRequest() {

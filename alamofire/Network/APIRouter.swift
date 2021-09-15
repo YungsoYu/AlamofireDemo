@@ -70,18 +70,6 @@ class APIRouter: URLRequestConvertible {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         }
         
-        // 5. header 추가
-//        if hasHeader {
-//            var headers = [String: String]()
-//            headers["Authorization"] = "toekn " + accessToken
-//            urlRequest.allHTTPHeaderFields = headers
-//        }
-        
-        // 6. print to console
-        print("[REQUEST]")
-        print("URL: \(request.url?.absoluteString ?? "nil")")
-        print("Body: \(request.httpBody?.toPrettyPrintedString ?? NSString("nil"))")
-        
         return request
     }
     
