@@ -21,24 +21,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        basicRequest()
-//        getRequestByRouter()
-//        postRequestByRouter()
-        
-        testAuth()
-    }
-    
-    func testAuth() {
-        let router = APIRouter(path: APIPath.postPractice, httpMethod: .post, parameters: userInfo.toData, apiType: .service)
-        APIManager.shared.session.request(router).responseDecodable(of: HttpbinResponse.self, completionHandler: {(response: DataResponse<HttpbinResponse, AFError>) -> Void in
-            switch response.result {
-            case .success(let value):
-                // do someting with value in view controller level
-                break
-            case .failure(let err):
-                 print(err)
-            }
-        })
+        basicRequest()
+        getRequestByRouter()
+        postRequestByRouter()
+        requstUsingSession()
     }
     
     func basicRequest() {
@@ -87,6 +73,13 @@ class ViewController: UIViewController {
                 print("API Failure")
                 print(err)
             }
+        })
+    }
+    
+    func requstUsingSession() {
+        let router = APIRouter(path: APIPath.postPractice, httpMethod: .post, parameters: userInfo.toData, apiType: .service)
+        APIManager.shared.session.request(router).responseDecodable(of: HttpbinResponse.self, completionHandler: {(response: DataResponse<HttpbinResponse, AFError>) -> Void in
+            
         })
     }
     
