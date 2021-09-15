@@ -21,9 +21,9 @@ class APIEventLogger: EventMonitor {
       "URL: " + (request.request?.url?.absoluteString ?? "")  + "\n"
         + "Method: " + (request.request?.httpMethod ?? "") + "\n"
         + "Headers: " + "\(request.request?.allHTTPHeaderFields ?? [:])" + "\n"
-        + "Authorization: " + (request.request?.headers["Authorization"] ?? "") + "\n"
-        + "Body: " + (request.request?.httpBody?.toPrettyPrintedString ?? "")
     )
+    print("Authorization: " + (request.request?.headers["Authorization"] ?? ""))
+    print("Body: " + (request.request?.httpBody?.toPrettyPrintedString ?? ""))
   }
   //3
   func request<Value>(
